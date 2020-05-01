@@ -1,0 +1,26 @@
+{
+  "name": "toodlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttwkr/todolist_node_back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ttwkr/todolist_node_back/issues"
+  },
+  "homepage": "https://github.com/ttwkr/todolist_node_back#readme",
+  "dependencies": {
+    "body-parser": "~1.14.2",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "~1.13.0",
+    "mysql2": "^2.1.0"
+  }
+}
