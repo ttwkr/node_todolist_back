@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ttwkr/todolist_node_back#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "body-parser": "~1.14.2",
+    "express-session": "~1.13.0"
   }
 }
