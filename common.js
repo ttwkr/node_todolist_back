@@ -6,7 +6,7 @@ const getConnection = () => {
         user : 'root',
         password : '1234',
         port : 3306,
-        database : 'todolist'
+        database : 'portfolio'
     })
 }
 

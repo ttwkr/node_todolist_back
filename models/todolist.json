@@ -1,0 +1,35 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "node js 첫번째 포트폴리오 todoList",
+    "required": [
+        "id",
+        "contents"
+    ],
+    "properties": {
+        "id": {
+            "type": "string",
+            "title": "리스트 번호",
+            "pattern": "^[0-9]+$"
+        },
+        "contents": {
+            "type": "string",
+            "title": "내용",
+            "default": "",
+            "pattern": "^[a-zA-Z0-9-]+$"
+        },
+        "created_at" : {
+            "type" : "string",
+            "title" : "생성일"
+        },
+        "updated_at" : {
+            "type" : "string",
+            "title" : "수정일"
+        },
+        "deleted_at" : {
+            "type" : "string",
+            "title" : "삭제일"
+        }
+    }
+}
