@@ -10,6 +10,6 @@ const getConnection = () => {
     })
 }
 
-module.exports= {
+module.exports = {
     getConnection
 }
