@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const fs = require('fs');
-const router = require('./route/main')(app,fs);
+const router = require('./route/main');
 
 app.set('viws', __dirname + '/views');
 app.set('view engine', 'ejs');
