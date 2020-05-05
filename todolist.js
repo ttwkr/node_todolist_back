@@ -43,6 +43,10 @@ const addContents = (req, res) => {
     connection.end()
 }
 
+const updateContent = (req, res)=> {
+    
+}
+
 module.exports = {
     excute,
     addContents
