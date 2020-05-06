@@ -12,3 +12,4 @@ var server = router.listen(8000, function(){
 
 router.get('/api/todolist', todolist.excute)
 router.post('/api/add/todolist',todolist.addContents)
+router.delete('/api/delete/todolist',todolist.deleteContent);

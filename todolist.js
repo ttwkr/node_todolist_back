@@ -15,8 +15,8 @@ const excute = async (req, res) => {
     connection.query('select * from todolist', (error, result, fields) => {
         if(error) {
             console.log(error)
+            res.send('fail listing')
         }
-        console.log(result)
         res.send(result)
     })
 
@@ -32,9 +32,34 @@ const addContents = (req, res) => {
         }
     })
 
-    connection.query(`insert into todolist (contents) values (${req.body.contents})`, (error, result, fields) => {
+    let query = `insert into todolist (contents) values ('${req.body.contents}')`
+    console.log(query)
+    connection.query(query, (error, result, fields) => {
         if(error) {
             console.log(error)
+            res.send('fail add')
+        }
+        res.send('success')
+    })
+
+    connection.end()
+}
+
+const deleteContent = (req, res)=> {
+    const connection = common.getConnection();
+
+    connection.connect( (err) => {
+        if(err){
+            throw new Error('fail connect')
+        }
+    })
+    
+    let query = `delete from todolist where id = ${req.body.id}`
+    
+    connection.query(query, (error, result, fields) => {
+        if(error) {
+            console.log(error)
+            res.send('fail')
         }
         console.log(result)
         res.send('success')
@@ -43,12 +68,9 @@ const addContents = (req, res) => {
     connection.end()
 }
 
-const updateContent = (req, res)=> {
-    
-}
-
 module.exports = {
     excute,
-    addContents
+    addContents,
+    deleteContent
 }
 
