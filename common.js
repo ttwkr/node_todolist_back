@@ -10,6 +10,32 @@ const getConnection = () => {
     })
 }
 
+const dbConnect = () => {
+    const connect = getConnection()
+
+    connect.connect((err) => {
+        if(err) {
+            throw new Error('fail connect')
+        }
+    })
+}
+
+const queryFetch = (query) => {
+    const connect = getConnection()
+
+    return connect.query(query, (error, result, fields) => {
+        if(error) {
+            console.log(error)
+            connect.end()          
+        }
+
+        connect.end() 
+    })
+    
+}
+
 module.exports = {
-    getConnection
+    getConnection,
+    dbConnect,
+    queryFetch
 }
