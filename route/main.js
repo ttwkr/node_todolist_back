@@ -19,4 +19,4 @@ router.delete('/api/delete/todolist',todolist.deleteContent);
 
 //member join
 
-router.post('/api/member/join', member.join)
+router.post('/api/member/join', member.join);
