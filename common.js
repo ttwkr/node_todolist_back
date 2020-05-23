@@ -11,9 +11,9 @@ const sequelize = new Sequelize(
         password : process.env.DB_PASS,
         port : process.env.DB_PORT,
         database : process.env.DB_DATABASE,
-        dialact : 'mysql'
+        dialact : 'mysql',
+        operatorsAliases : false
     }
-
 )
 
 
