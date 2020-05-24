@@ -1,57 +1,61 @@
 'use strict'
 
-const common = require('../common'); // db 연결 모듈 호출
+// const common = require('../common'); // db 연결 모듈 호출
+const {todolist} = require('../models');
 
 const excute = async (req, res) => {
-    
-    const connection = await common.getConnection() //db 연결
 
-    connection.connect( (err) => {
-        if(err) {
-            throw new Error('fail connect')
-        }
-    })
+    const result = await todolist.findAll();
+    // console.log(JSON.stringify(result));
+    res.send(result)
+    // const connection = await common.getConnection() //db 연결
 
-    connection.query('select * from todolist', (error, result, fields) => {
-        if(error) {
-            console.log(error)
-            res.send('fail listing')
-        }
-        res.send(result)
-    })
+    // connection.connect( (err) => {
+    //     if(err) {
+    //         throw new Error('fail connect')
+    //     }
+    // })
 
-    connection.end()
+    // connection.query('select * from todolist', (error, result, fields) => {
+    //     if(error) {
+    //         console.log(error)
+    //         res.send('fail listing')
+    //     }
+    //     res.send(result)
+    // })
+
+    // connection.end()
 }
 
-const addContents = (req, res) => {
-    common.dbConnect()
+// const addContents = (req, res) => {
+//     common.dbConnect()
 
-    let query = `insert into todolist (contents) values ('${req.body.contents}')`
+//     let query = `insert into todolist (contents) values ('${req.body.contents}')`
     
-    let result = common.queryFetch(query)
+//     let result = common.queryFetch(query)
 
-    if(!result) {
-        res.send('fail add')
-    }
-    res.send('success add')
-}
+//     if(!result) {
+//         res.send('fail add')
+//     }
+//     res.send('success add')
+// }
 
-const deleteContent = (req, res)=> {
-    common.dbConnect()
+// const deleteContent = (req, res)=> {
+//     common.dbConnect()
     
-    let query = `delete from todolist where id = ${req.body.id}`
+//     let query = `delete from todolist where id = ${req.body.id}`
     
-    const result = common.queryFetch(query)
+//     const result = common.queryFetch(query)
 
-    if(!result) {
-        res.send('fail delete')
-    }
-    res.send('success delete')
-}
+//     if(!result) {
+//         res.send('fail delete')
+//     }
+//     res.send('success delete')
+// }
 
 module.exports = {
     excute,
-    addContents,
-    deleteContent
+    // addContents,
+    // deleteContent
 }
 
