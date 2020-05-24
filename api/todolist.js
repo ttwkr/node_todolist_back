@@ -6,25 +6,28 @@ const {todolist} = require('../models');
 const excute = async (req, res) => {
 
     const result = await todolist.findAll();
-    // console.log(JSON.stringify(result));
     res.send(result)
-    // const connection = await common.getConnection() //db 연결
 
-    // connection.connect( (err) => {
-    //     if(err) {
-    //         throw new Error('fail connect')
-    //     }
-    // })
+    //기존 디비 연결
+    /*
+    const connection = await common.getConnection() //db 연결
 
-    // connection.query('select * from todolist', (error, result, fields) => {
-    //     if(error) {
-    //         console.log(error)
-    //         res.send('fail listing')
-    //     }
-    //     res.send(result)
-    // })
+    connection.connect( (err) => {
+        if(err) {
+            throw new Error('fail connect')
+        }
+    })
 
-    // connection.end()
+    connection.query('select * from todolist', (error, result, fields) => {
+        if(error) {
+            console.log(error)
+            res.send('fail listing')
+        }
+        res.send(result)
+    })
+
+    connection.end()
+    */
 }
 
 // const addContents = (req, res) => {
