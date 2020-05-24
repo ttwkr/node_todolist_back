@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const todolist = require('../api/todolist')
 const member = require('../api/member')
-const sequelize = require('../common').sequelize
+
 
 sequelize.sync()
 router.use(cors());

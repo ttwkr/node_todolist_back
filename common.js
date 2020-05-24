@@ -1,41 +1,41 @@
 const mysql = require('mysql2');
-const Sequelize = require('sequelize');
-const env = require('dotenv').config()
+// const Sequelize = require('sequelize');
+// const env = require('dotenv').config()
 
 
 // orm 적용
-const sequelize = new Sequelize(
-    {
-        host : process.env.DB_HOST,
-        user : process.env.DB_USER,
-        password : process.env.DB_PASS,
-        port : process.env.DB_PORT,
-        database : process.env.DB_DATABASE,
-        dialact : 'mysql',
-        operatorsAliases : false
-    }
-)
-
-
-// const getConnection = () => {
-//     return mysql.createConnection({
+// const sequelize = new Sequelize(
+//     {
 //         host : process.env.DB_HOST,
 //         user : process.env.DB_USER,
 //         password : process.env.DB_PASS,
 //         port : process.env.DB_PORT,
-//         database : process.env.DB_DATABASE
-//     })
-// }
+//         database : process.env.DB_DATABASE,
+//         dialact : 'mysql',
+//         operatorsAliases : false
+//     }
+// )
 
-// const dbConnect = () => {
-//     const connect = getConnection()
 
-//     connect.connect((err) => {
-//         if(err) {
-//             throw new Error('fail connect')
-//         }
-//     })
-// }
+const getConnection = () => {
+    return mysql.createConnection({
+        host : process.env.DB_HOST,
+        user : process.env.DB_USER,
+        password : process.env.DB_PASS,
+        port : process.env.DB_PORT,
+        database : process.env.DB_DATABASE
+    })
+}
+
+const dbConnect = () => {
+    const connect = getConnection()
+
+    connect.connect((err) => {
+        if(err) {
+            throw new Error('fail connect')
+        }
+    })
+}
 
 const queryFetch = (query) => {
     const connect = getConnection()
@@ -52,11 +52,11 @@ const queryFetch = (query) => {
 }
 
 module.exports = {
-    // getConnection,
+    getConnection,
     dbConnect,
     queryFetch,
 
     // orm 적용
-    sequelize,
-    Sequelize
+    // sequelize,
+    // Sequelize
 }
