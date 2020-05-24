@@ -1,22 +1,18 @@
 'use strict';
 
-const common = require('../common');
-
-const todolist = common.sequelize.define('todolist', {
+module.exports = (sequelize, DataTypes)=>{
+    return sequelize.define('todolist', {
         id : {
-            type : common.Sequelize.DataTypes.INTEGER,
+            type : DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         contents : {
-            type : common.Sequelize.DataTypes.TEXT,
+            type : DataTypes.TEXT,
             allowNull : false,
         }
     }, {
-    timestamps: true , 
-    paranoid: true
-})
-
-module.exports = {
-    todolist
+        timestamps: true , 
+        paranoid: true
+    })
 }

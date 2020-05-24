@@ -1,9 +1,15 @@
 'use strict'
 
-const common = require('../common'); // db 연결 모듈 호출
+// const common = require('../common'); // db 연결 모듈 호출
+const {todolist} = require('../models');
 
 const excute = async (req, res) => {
-    
+
+    const result = await todolist.findAll();
+    res.send(result)
+
+    //기존 디비 연결
+    /*
     const connection = await common.getConnection() //db 연결
 
     connection.connect( (err) => {
@@ -21,37 +27,38 @@ const excute = async (req, res) => {
     })
 
     connection.end()
+    */
 }
 
-const addContents = (req, res) => {
-    common.dbConnect()
+// const addContents = (req, res) => {
+//     common.dbConnect()
 
-    let query = `insert into todolist (contents) values ('${req.body.contents}')`
+//     let query = `insert into todolist (contents) values ('${req.body.contents}')`
     
-    let result = common.queryFetch(query)
+//     let result = common.queryFetch(query)
 
-    if(!result) {
-        res.send('fail add')
-    }
-    res.send('success add')
-}
+//     if(!result) {
+//         res.send('fail add')
+//     }
+//     res.send('success add')
+// }
 
-const deleteContent = (req, res)=> {
-    common.dbConnect()
+// const deleteContent = (req, res)=> {
+//     common.dbConnect()
     
-    let query = `delete from todolist where id = ${req.body.id}`
+//     let query = `delete from todolist where id = ${req.body.id}`
     
-    const result = common.queryFetch(query)
+//     const result = common.queryFetch(query)
 
-    if(!result) {
-        res.send('fail delete')
-    }
-    res.send('success delete')
-}
+//     if(!result) {
+//         res.send('fail delete')
+//     }
+//     res.send('success delete')
+// }
 
 module.exports = {
     excute,
-    addContents,
-    deleteContent
+    // addContents,
+    // deleteContent
 }
 

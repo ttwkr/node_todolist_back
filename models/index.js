@@ -5,10 +5,15 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config.js');
+const config = require('../config/config')[env];
 const db = {};
 
-let sequelize =  new Sequelize(config.config.development);;
+let sequelize =  new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  config
+);
 
 fs
   .readdirSync(__dirname)
