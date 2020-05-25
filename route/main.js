@@ -17,8 +17,8 @@ var server = router.listen(8000, function(){
 //totolist
 
 router.get('/api/todolist', todolist.excute)
-// router.post('/api/add/todolist',todolist.addContents)
-// router.delete('/api/delete/todolist',todolist.deleteContent);
+router.post('/api/add/todolist',todolist.addContents)
+router.delete('/api/delete/todolist',todolist.deleteContent);
 
 //member join
 
