@@ -30,7 +30,18 @@ const excute = async (req, res) => {
     */
 }
 
-// const addContents = (req, res) => {
+const addContents = async (req, res) => {
+
+    const result = await todolist.create(
+        {
+            contents : req.body.contents
+        }
+    ).then(result => {
+        res.send(`success add ${result}`)
+    }).catch(err => {
+        res.send(err)
+    })
+
 //     common.dbConnect()
 
 //     let query = `insert into todolist (contents) values ('${req.body.contents}')`
@@ -41,9 +52,21 @@ const excute = async (req, res) => {
 //         res.send('fail add')
 //     }
 //     res.send('success add')
-// }
+}
 
-// const deleteContent = (req, res)=> {
+const deleteContent = (req, res)=> {
+
+    const result = todolist.destroy(
+        {
+            where : {
+                id : req.body.id
+            }
+        }
+    ).then(result => {
+        res.send('success delete')
+    }).catch( err => {
+        res.send('fail delete', err)
+    })
 //     common.dbConnect()
     
 //     let query = `delete from todolist where id = ${req.body.id}`
@@ -54,11 +77,11 @@ const excute = async (req, res) => {
 //         res.send('fail delete')
 //     }
 //     res.send('success delete')
-// }
+}
 
 module.exports = {
     excute,
-    // addContents,
-    // deleteContent
+    addContents,
+    deleteContent
 }
 
