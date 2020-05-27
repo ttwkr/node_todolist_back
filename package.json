@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ttwkr/todolist_node_back#readme",
   "dependencies": {
+    "aws-sdk": "^2.684.0",
     "body-parser": "~1.14.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
